@@ -273,18 +273,32 @@ class Renderer(object):
         for y in range(self.height):
             for x in range(self.width):
                 #Cuadrante -x-y
-                if x < (self.width/2):
+                if x < (self.width/2) and y < (self.height/2):
                     colorselection = color(
-                        (((x+y)/2)/self.width)/2,
-                        (((x+y)/2)/self.width)/2,
-                        (((x+y)/2)/self.width)/2
+                        (((x+y)/2)/self.width)/1.5,
+                        (((x+y)/2)/self.width)/1.5,
+                        (((x+y)/2)/self.width)/1.5
                     )
                 # Cuadrante xy
-                if x >= (self.width/2):
+                if x >= (self.width/2) and y >= (self.height/2):
                     colorselection = color(
-                        (((self.width/2)-(((x+y)/2)-self.width/2))/self.width)/2,
-                        (((self.width/2)-(((x+y)/2)-self.width/2))/self.width)/2,
-                        (((self.width/2)-(((x+y)/2)-self.width/2))/self.width)/2
+                        (((self.width/2)-(((x+y)/2)-self.width/2))/self.width)/1.5,
+                        (((self.width/2)-(((x+y)/2)-self.width/2))/self.width)/1.5,
+                        (((self.width/2)-(((x+y)/2)-self.width/2))/self.width)/1.5
+                    )
+
+                if x < (self.width/2) and y >= (self.height/2):
+                    colorselection = color(
+                        (((x-(y-(self.width)))/2)/(self.width))/1.5,
+                        (((x-(y-(self.width)))/2)/(self.width))/1.5,
+                        (((x-(y-(self.width)))/2)/(self.width))/1.5
+                    )
+
+                if x >= (self.width/2) and y < (self.height/2):
+                    colorselection = color(
+                        ((-((x-self.width)-y)/2)/(self.width))/1.5,
+                        ((-((x-self.width)-y)/2)/(self.width))/1.5,
+                        ((-((x-self.width)-y)/2)/(self.width))/1.5
                     )
                 self.glPoint(x, y, colorselection)
 
